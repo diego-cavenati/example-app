@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    // creo le variabili
+    $page_title = "Welcome to Laravel";
+    $class_number = 72;
+    // le passo alla view
+    return view('welcome', compact('page_title', 'class_number'));
+})->name('home');
+
+Route::get('/about', function () {
+    $data = [
+        'page_title' => 'About classe 72',
+        'description' => 'Lorem',
+        'students' => ['Simone', 'Yuri'],
+        'teachers' => [],
+    ];
+    return view('about', $data);
+})->name('about');
